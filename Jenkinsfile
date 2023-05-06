@@ -7,51 +7,36 @@ pipeline {
    
      }
    
-  
- 
-  stages {
+     stages {
     
-    stage("build") {
-      steps {
-        echo "building the app"  
-        
-      }
-      
-      
-    }
-    
-    stage("test") {
-      steps {
-        echo "testing the app"  
-        when {
-          expression {
-            params.executetest
-          
-          
-          }
-        
+      stage("build") {
+        steps {
+          echo "building the app"  
         
         }
-      }
-      
-      
-    }
+           
+     }
     
-    
-    stage("deploy") {
-      steps {
-        echo "deploying the app"  
-        echo "deploying version ${params.VERSION}"
+      stage("test") {
+        steps {
+         echo "testing the app"  
+         when {
+             expression {
+             params.executetest
+                  
+           }
+                
+         }
+       }
+            
+     }
+      
+     stage("deploy") {
+       steps {
+         echo "deploying the app"  
+         echo "deploying version ${params.VERSION}"
         
-      }
-      
-      
-    }
-    
-    
-   
-  }
-  
-  
-  
+       }     
+     }            
+  }  
 }
