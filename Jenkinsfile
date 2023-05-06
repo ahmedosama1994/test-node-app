@@ -4,8 +4,8 @@ pipeline {
   
   Parameters {
     
-    choice(name: ‘VERSION’, choices: [‘1.3’, ‘2.1’], description: ‘choose from the choices’ )
-    booleanParam(name: ‘executeTest’, defaultValue: true, description: ‘this is the defaul value’)
+    choice(name: 'VERSION', choices: ['1.3', '2.1'], description: 'choose from the choices' )
+    booleanParam(name: 'executeTest', defaultValue: true, description: 'this is the defaul value')
   
 }
    
