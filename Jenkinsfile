@@ -2,6 +2,9 @@ def gv
 pipeline {
   
      agent any 
+    tools {
+    maven 'Maven'
+  }
      parameters { 
         choice(name: 'VERSION', choices: ['1.3', '2.1'], description: 'choose from the choices')
         booleanParam(name: 'executeTest', defaultValue: true, description: 'this is the defaul value')
@@ -23,6 +26,7 @@ pipeline {
        
         steps {
           script {
+            sh 'mvn package'
             echo "building the app"  
             withCredentials([usernamePassword(credentialsId: '1dad4981-b3c5-45f8-a121-e0481ec0c5c0', passwordVariable: 'PASS', usernameVariable: 'USER')])
                 sh 'docker build -t java-maven-app:2.0 .' 
