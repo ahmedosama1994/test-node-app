@@ -20,6 +20,16 @@ pipeline {
       
        }
       stage("build") {
+        input {
+        message "Select the env you want to deply on"
+          "Doneo"
+          parameters { 
+        choice(name: 'env', choices: ['test', 'prod], description: 'choose from the choices')
+   
+     }
+        
+        }
+        
         steps {
           echo "building the app"  
         
