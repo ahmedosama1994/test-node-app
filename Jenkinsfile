@@ -32,9 +32,9 @@ pipeline {
             withCredentials([usernamePassword(credentialsId:'dockerhubb', passwordVariable: 'PASS', usernameVariable: 'USERNAME')])
           {
 
-                sh 'docker build -t java-maven-app:2.0 .' 
+                sh 'docker build -t a1994/java-maven-app:2.0 .' 
                 sh 'echo $PASS | docker login -u $USERNAME --password-stdin'
-                sh 'docker push java-maven-app:2.0'
+                sh 'docker push a1994/java-maven-app:2.0'
           
           }
         }
