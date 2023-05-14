@@ -25,7 +25,7 @@ pipeline {
       stage("building the docker image") {
        
         steps {
-          script {
+          
             sh 'mvn package'
             echo "building the app"  
             withCredentials([usernamePassword(credentialsId: 'dockerhubb', passwordVariable: 'PASS', usernameVariable: 'USER')])
@@ -33,7 +33,7 @@ pipeline {
                 sh 'echo $PASS | docker login -u $USER --password-stdin'
                 sh 'docker push java-maven-app:2.0'
           
-          }
+          
         }
            
      }
