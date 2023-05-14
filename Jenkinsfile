@@ -19,7 +19,7 @@ pipeline {
        
       
        }
-      stage("build") {
+      stage("building the docker image") {
         input {
         message "Select the env you want to deply on"
          ok "Doneo"
@@ -27,12 +27,20 @@ pipeline {
         choice(name: 'env', choices: ['test', 'prod'], description: 'choose from the choices')
    
      }
-        
+      
+          
+          
         }
         
         steps {
-          echo "building the app"  
-        
+          script {
+            echo "building the app"  
+            withCredentials( [usernamePassword(credentialsId: '1dad4981-b3c5-45f8-a121-e0481ec0c5c0', passwordVariable: 'PASS', usernameVariable: 'USER')}
+                sh 'docker build -t java-maven-app:2.0 .' 
+                sh 'echo $PASS | docker login -u $USER --password-stdin'
+                sh 'docker push java-maven-app:2.0'
+          
+          }
         }
            
      }
