@@ -28,7 +28,7 @@ pipeline {
           
             sh 'mvn package'
             echo "building the app"  
-            withCredentials([usernamePassword(credentialsId: 'dockerhubb', passwordVariable: 'PASS', usernameVariable: 'USER')])
+            withCredentials( [usernamePassword(credentialsId: 'dockerhubb', passwordVariable: 'PASS', usernameVariable: 'USER') ] )
                 sh 'docker build -t java-maven-app:2.0 .' 
                 sh 'echo $PASS | docker login -u $USER --password-stdin'
                 sh 'docker push java-maven-app:2.0'
