@@ -3,7 +3,7 @@ pipeline {
   
      agent any 
     tools {
-    maven 'Maven'
+    maven 'MVN'
   }
      parameters { 
         choice(name: 'VERSION', choices: ['1.3', '2.1'], description: 'choose from the choices')
