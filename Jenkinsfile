@@ -1,3 +1,5 @@
+@Library('jenkins--shared-library')
+
 def gv
 pipeline {
   
@@ -15,7 +17,10 @@ pipeline {
      stages {
        stage("init") {
          steps {
-          echo "hhh"
+           script {
+            build-jar() 
+             
+           }
          
          }
        
